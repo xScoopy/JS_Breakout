@@ -1,0 +1,25 @@
+{
+  "name": "js_breakout",
+  "version": "1.0.0",
+  "description": "Breakout Game using pure JavaScript",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xScoopy/JS_Breakout.git"
+  },
+  "keywords": [],
+  "author": "Jeremiah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xScoopy/JS_Breakout/issues"
+  },
+  "homepage": "https://github.com/xScoopy/JS_Breakout#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2"
+  }
+}
