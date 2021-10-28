@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d');
 const paddleHeight = 10;
 const paddleWidth = 75;
 let paddleX = (canvas.width - paddleWidth) / 2;
+const paddleYStart = (canvas.height - paddleHeight);
 let rightPressed = false;
 let leftPressed = false;
 
