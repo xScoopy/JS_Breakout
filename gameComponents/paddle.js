@@ -1,18 +1,8 @@
-class Paddle {
-  constructor(height, width, x, y, color = 'red') {
-    this.height = height;
-    this.width = width;
-    this.x = x;
-    this.y = y;
-    this.color = color;
-  }
+import Sprite from './sprite.js';
 
-  render(ctx) {
-    ctx.beginPath();
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    ctx.closePath();
+class Paddle extends Sprite {
+  constructor(x, y, width, height, color = 'red') {
+    super(x, y, width, height, color);
   }
 
   moveBy(dx, dy) {

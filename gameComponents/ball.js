@@ -1,22 +1,12 @@
-//   Properties
-// radius
-// color
-// x
-// y
-// dx
-// dy
-//   Methods
-// render(ctx)
-// move()
+import Sprite from './sprite.js';
 
-class Ball {
+class Ball extends Sprite {
   constructor(x = 0, y = 0, dx = 2, dy = -2, radius = 10, color = 'red') {
-    this.x = x;
-    this.y = y;
+    super(x, y, radius * 2, radius * 2, color);
+
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
-    this.color = color;
   }
 
   render(ctx) {

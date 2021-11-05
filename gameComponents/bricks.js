@@ -1,12 +1,17 @@
+import Brick from './brick.js';
+
 class Bricks {
-  constructor(cols, rows, defWidth, defHeight, offLeft, offTop, padding) {
+  constructor({
+    cols, rows, width, height, padding, offsetLeft, offsetTop, color,
+  }) {
     this.cols = cols;
     this.rows = rows;
-    this.defWidth = defWidth;
-    this.defHeight = defHeight;
-    this.offLeft = offLeft;
-    this.offTop = offTop;
+    this.width = width;
+    this.height = height;
     this.padding = padding;
+    this.offsetLeft = offsetLeft;
+    this.offsetTop = offsetTop;
+    this.color = color;
     this.bricks = [];
     this.init();
   }
@@ -15,9 +20,9 @@ class Bricks {
     for (let c = 0; c < this.cols; c += 1) {
       this.bricks[c] = [];
       for (let r = 0; r < this.rows; r += 1) {
-        const brickX = (c * (this.defWidth + this.padding)) + this.offLeft;
-        const brickY = (r * (this.defHeight + this.padding)) + this.offTop;
-        this.bricks[c][r] = new Bricks(brickX, brickY, this.defWidth, this.defHeight, this.color);
+        const brickX = (c * (this.width + this.padding)) + this.offsetLeft;
+        const brickY = (r * (this.height + this.padding)) + this.offsetTop;
+        this.bricks[c][r] = new Brick(brickX, brickY, this.width, this.height, this.color);
       }
     }
   }
@@ -33,5 +38,4 @@ class Bricks {
     }
   }
 }
-
 export default Bricks;
