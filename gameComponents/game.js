@@ -11,13 +11,14 @@ class Game {
     this.ballRadius = 10;
     this.paddleHeight = 10;
     this.paddleWidth = 75;
-    this.brickRowCount = 3;
+    this.brickRowCount = 5;
     this.brickColumnCount = 5;
-    this.brickWidth = 75;
     this.brickHeight = 20;
     this.brickPadding = 10;
     this.brickOffsetTop = 30;
     this.brickOffsetLeft = 30;
+    // eslint-disable-next-line max-len
+    this.brickWidth = (this.canvas.width - (this.brickPadding * this.brickColumnCount) - this.brickOffsetLeft) / this.brickColumnCount;
     this.paddleXStart = (this.canvas.width - this.paddleWidth) / 2;
     this.paddleYStart = this.canvas.height - this.paddleHeight;
     this.PI2 = Math.PI * 2;
@@ -52,7 +53,6 @@ class Game {
   setup() {
     this.livesLabel.value = 3;
     this.resetBallAndPaddle();
-
     document.addEventListener('keydown', (e) => { this.keyDownHandler(e); }, false);
     document.addEventListener('keyup', (e) => { this.keyUpHandler(e); }, false);
     document.addEventListener('mousemove', (e) => { this.mouseMoveHandler(e); }, false);
@@ -77,6 +77,16 @@ class Game {
             this.ball.dy = -this.ball.dy;
             brick.status = 0;
             this.scoreLabel.value += 1;
+            if (Math.sign(this.ball.dy) === 1) {
+              this.ball.dy += 0.1;
+            } else {
+              this.ball.dy -= 0.1;
+            }
+            if (Math.sign(this.ball.dx) === 1) {
+              this.ball.dx += 0.1;
+            } else {
+              this.ball.dx -= 0.1;
+            }
 
             if (this.scoreLabel.value === this.bricks.cols * this.bricks.rows) {
               alert('You Win');
@@ -104,7 +114,16 @@ class Game {
     if (this.ball.y + this.ball.dy < this.ball.radius) {
       this.ball.dy = -this.ball.dy;
     } else if (this.ball.y + this.ball.dy > this.canvas.height - this.ball.radius) {
-      if (this.ball.x > this.paddle.x && this.ball.x < this.paddle.x + this.paddle.width) {
+      if (this.ball.x > this.paddle.x && this.ball.x < this.paddle.x + (this.paddle.width / 2)) {
+        if (Math.sign(this.ball.dx) === 1) {
+          this.ball.dx = -this.ball.dx;
+        }
+        this.ball.dy = -this.ball.dy;
+      // eslint-disable-next-line max-len
+      } else if (this.ball.x > this.paddle.x + (this.paddle.width / 2) && this.ball.x < this.paddle.x + this.paddle.width) {
+        if (Math.sign(this.ball.dx) === -1) {
+          this.ball.dx = -this.ball.dx;
+        }
         this.ball.dy = -this.ball.dy;
       } else {
         this.livesLabel.value -= 1;

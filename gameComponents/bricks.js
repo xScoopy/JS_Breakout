@@ -22,7 +22,11 @@ class Bricks {
       for (let r = 0; r < this.rows; r += 1) {
         const brickX = (c * (this.width + this.padding)) + this.offsetLeft;
         const brickY = (r * (this.height + this.padding)) + this.offsetTop;
-        this.bricks[c][r] = new Brick(brickX, brickY, this.width, this.height, this.color);
+        if (r % 2 === 0) {
+          this.bricks[c][r] = new Brick(brickX, brickY, this.width, this.height);
+        } else {
+          this.bricks[c][r] = new Brick(brickX, brickY, this.width, this.height, this.color);
+        }
       }
     }
   }
