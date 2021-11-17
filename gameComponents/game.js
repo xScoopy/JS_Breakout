@@ -12,7 +12,7 @@ class Game {
     this.paddleHeight = 10;
     this.paddleWidth = 75;
     this.brickRowCount = 5;
-    this.brickColumnCount = 5;
+    this.brickColumnCount = 10;
     this.brickHeight = 20;
     this.brickPadding = 10;
     this.brickOffsetTop = 30;
